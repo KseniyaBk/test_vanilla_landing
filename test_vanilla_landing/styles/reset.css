@@ -1,0 +1,98 @@
+/* ====================  
+   CSS RESET 2025  
+   - Поддержка всех современных браузеров  
+   - Улучшенная доступность (a11y)  
+   - Оптимизация производительности  
+   - Подготовка для CSS-фреймворков  
+   ==================== */  
+
+/* 1. Базовый сброс (агрессивный, но безопасный) */  
+*, *::before, *::after {  
+  box-sizing: border-box; /* Интуитивный бокс-модель */  
+  margin: 0;  
+  padding: 0;  
+  border: 0;  
+  -webkit-tap-highlight-color: transparent; /* Убирает подсветку тапов на мобильных */  
+}  
+
+/* 2. Документ и типографика */  
+:where(html) {  
+  scroll-behavior: smooth; /* Плавный скролл */  
+  hanging-punctuation: first last; /* Висячая пунктуация */  
+  text-size-adjust: none; /* Фикс авторазмера текста в iOS */  
+}  
+
+:where(body) {  
+  min-height: 100dvh; /* Динамический viewport (корректно на мобильных) */  
+  line-height: 1.5;  
+  font-synthesis: none; /* Запрет синтеза жирного/курсива в некоторых браузерах */  
+  text-rendering: optimizeLegibility; /* Лучшее сглаживание */  
+  -webkit-font-smoothing: antialiased; /* Для macOS */  
+}  
+
+/* 3. Медиа-элементы (оптимизация загрузки) */  
+:where(img, picture, video, svg, canvas) {  
+  display: block; /* Убирает подпись под img/inline SVG */  
+  max-width: 100%;  
+  height: auto;  
+  font-style: italic; /* Для ALT-текста */  
+}  
+
+:where(svg) {  
+  fill: currentColor; /* Наследование цвета */  
+}  
+
+/* 4. Интерактивные элементы (доступность) */  
+:where(button, input, select, textarea) {  
+  font: inherit;  
+  color: inherit;  
+  background: transparent;  
+  border-radius: 0; /* Сброс для iOS */  
+}  
+
+:where(button, [type="button"], [type="submit"]) {  
+  cursor: pointer;  
+  -webkit-user-select: none;  
+  user-select: none;  
+}  
+
+:where(:focus-visible) {  
+  outline: 2px solid oklch(55% 0.25 250); /* Современный цвет в OKLCH */  
+  outline-offset: 3px;  
+}  
+
+/* 5. Списки и цитаты */  
+:where(ul, ol) {  
+  list-style: none;  
+  padding-inline-start: 0; /* Логические свойства */  
+}  
+
+:where(blockquote) {  
+  quotes: "“" "”"; /* Умные кавычки */  
+}  
+
+/* 6. Таблицы (если нужны) */  
+:where(table) {  
+  border-collapse: collapse;  
+  border-spacing: 0;  
+}  
+
+/* 7. Пользовательский выбор */  
+::selection {  
+  background: oklch(65% 0.3 250 / 40%);  
+  color: white;  
+}  
+
+/* 8. Анимации (оптимизация) */  
+@media (prefers-reduced-motion: reduce) {  
+  *, *::before, *::after {  
+    animation-duration: 0.01ms !important;  
+    transition-duration: 0.01ms !important;  
+    scroll-behavior: auto !important;  
+  }  
+}  
+
+/* 9. Удаление ARIA-атрибутов из CSS */  
+[aria-hidden="true"] {  
+  display: none !important;  
+}  
